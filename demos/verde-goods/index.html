@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verde Goods — Concept Project by Flowline Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Verde <span>Goods</span></div>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn">Cart <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Plant goods, delivered</div>
+    <h1>Low-maintenance plants for real life.</h1>
+    <p>Hand-picked houseplants and care essentials, shipped with a plant that actually survives your apartment.</p>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="wrap">
+    <h2>Best sellers</h2>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="value-band" id="about">
+  <div class="wrap">
+    <div class="value-grid">
+      <div>
+        <h3>Grown, not warehoused</h3>
+        <p>Every plant ships direct from partner growers, not a distribution center.</p>
+      </div>
+      <div>
+        <h3>30-day guarantee</h3>
+        <p>If it doesn't make it, we replace it — no questions asked.</p>
+      </div>
+      <div>
+        <h3>Care guides included</h3>
+        <p>Every order comes with a plain-language care card, not a QR code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Concept project by <a href="../../index.html">Flowline Digital</a> — Verde Goods is a fictional store built to demonstrate a catalog / cart UI.
+  </div>
+</footer>
+
+<div class="toast" id="toast">Added to cart</div>
+
+<script>
+  const products = [
+    { name: "Monstera Deliciosa", price: "$42", meta: "Medium light", emoji: "🌿" },
+    { name: "Snake Plant", price: "$28", meta: "Low light", emoji: "🪴" },
+    { name: "Pothos, Golden", price: "$22", meta: "Any light", emoji: "🌱" },
+    { name: "Fiddle Leaf Fig", price: "$65", meta: "Bright, indirect", emoji: "🌳" },
+    { name: "ZZ Plant", price: "$34", meta: "Low light", emoji: "🪴" },
+    { name: "Ceramic Planter, Small", price: "$18", meta: "Drainage included", emoji: "🏺" },
+    { name: "Watering Can", price: "$24", meta: "1L, stainless", emoji: "🚿" },
+    { name: "Plant Food, 8oz", price: "$12", meta: "All-purpose", emoji: "🧴" },
+  ];
+
+  const grid = document.getElementById("productGrid");
+  const toast = document.getElementById("toast");
+  const cartCount = document.getElementById("cartCount");
+  let count = 0;
+
+  products.forEach(p => {
+    const el = document.createElement("div");
+    el.className = "product";
+    el.innerHTML = `
+      <div class="product-img">${p.emoji}</div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="price">${p.price}</div>
+        <div class="meta">${p.meta}</div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+    `;
+    el.querySelector(".add-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      count++;
+      cartCount.textContent = count;
+      toast.textContent = `Added "${p.name}" to cart`;
+      toast.classList.add("show");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+    });
+    grid.appendChild(el);
+  });
+</script>
+
+</body>
+</html>
