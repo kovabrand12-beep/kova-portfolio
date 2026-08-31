@@ -34,9 +34,10 @@ body {
 
 header { border-bottom: 1px solid var(--line); background: #fff; }
 header .inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--navy); }
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--navy); text-decoration: none; }
 .brand span { color: var(--gold); }
-nav a { margin-left: 26px; color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+nav a { margin-left: 26px; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .15s; }
+nav a:hover, nav a.active { color: var(--navy); }
 
 .btn {
   display: inline-block;

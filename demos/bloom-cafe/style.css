@@ -34,7 +34,7 @@ header {
 }
 header .wrap { display: flex; align-items: center; justify-content: space-between; }
 
-.brand { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.01em; }
+.brand { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; }
 .brand span { color: var(--terracotta); }
 
 nav a {
@@ -43,7 +43,9 @@ nav a {
   margin-left: 26px;
   font-size: 0.92rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: color .15s;
 }
+nav a:hover, nav a.active { color: var(--terracotta); }
 
 .btn {
   display: inline-block;
@@ -58,6 +60,42 @@ nav a {
   transition: transform .2s cubic-bezier(.16,.8,.24,1), box-shadow .2s;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(193,85,58,0.28); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--terracotta);
+  color: var(--terracotta);
+  padding: 9px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 0.86rem;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: var(--terracotta); color: #fff; }
+
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.teaser-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  transition: transform .3s cubic-bezier(.16,.8,.24,1), border-color .3s;
+}
+.teaser-card:hover { transform: translateY(-4px); border-color: var(--terracotta); }
+.teaser-card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.teaser-card p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--soft);
+  font-size: 0.9rem;
+  margin: 0 0 18px;
+}
 
 .hero {
   padding: 90px 0 70px;
@@ -155,7 +193,7 @@ footer a { color: var(--terracotta); }
 
 @media (max-width: 760px) {
   nav { display: none; }
-  .menu-grid, .info-grid { grid-template-columns: 1fr; }
+  .menu-grid, .info-grid, .teaser-grid { grid-template-columns: 1fr; }
   .hero-grid { flex-direction: column-reverse; gap: 30px; text-align: center; }
   .hero-art svg { width: 150px; height: 150px; }
 }

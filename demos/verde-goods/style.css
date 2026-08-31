@@ -31,21 +31,39 @@ header {
   border-bottom: 1px solid var(--line);
 }
 header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.brand { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.01em; }
+.brand { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
 .brand span { color: var(--green); }
 
-nav a { margin-left: 26px; color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+nav a { margin-left: 26px; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .15s; }
+nav a:hover, nav a.active { color: var(--green-dark); }
 
 .cart-btn {
   position: relative;
+  display: inline-block;
   border: 1px solid var(--line);
   background: #fff;
+  color: var(--ink);
+  text-decoration: none;
   border-radius: 999px;
   padding: 9px 18px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  transition: border-color .2s;
 }
+.cart-btn:hover { border-color: var(--green); }
+
+.btn-outline {
+  border: 1px solid var(--green);
+  color: var(--green-dark);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: var(--green); color: #fff; }
 .cart-count {
   background: var(--green);
   color: #fff;

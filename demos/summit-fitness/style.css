@@ -32,10 +32,10 @@ body {
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
 header { padding: 26px 0; display: flex; align-items: center; justify-content: space-between; }
-.brand { font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.brand { font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
 .brand span { color: var(--yellow); }
-nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 600; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.03em; }
-nav a:hover { color: var(--ink); }
+nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 600; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.03em; transition: color .15s; }
+nav a:hover, nav a.active { color: var(--yellow); }
 
 .btn {
   display: inline-block;

@@ -4,18 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Summit Fitness | Kova</title>
+<link rel="stylesheet" href="../../assets/back-button.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<a href="../../index.html" class="back-to-kova"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Kova</a>
+
 <div class="wrap">
   <header>
-    <div class="brand">Summit <span>Fitness</span></div>
+    <a class="brand" href="index.html">Summit <span>Fitness</span></a>
     <nav>
-      <a href="#schedule">Schedule</a>
-      <a href="#membership">Membership</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <a class="btn btn-primary" href="#membership">Join now</a>
+    <a class="btn btn-primary" href="membership.html">Join now</a>
   </header>
 </div>
 
@@ -26,8 +31,8 @@
       <h1 class="reveal">Train like it matters.</h1>
       <p class="reveal">Small-group strength training and conditioning classes, six days a week. No fluff, no mirrors-and-music theatrics — just coached, programmed training.</p>
       <div class="hero-cta reveal">
-        <a class="btn btn-primary" href="#membership">Start free trial</a>
-        <a class="btn btn-outline" href="#schedule">View schedule</a>
+        <a class="btn btn-primary" href="membership.html">Start free trial</a>
+        <a class="btn btn-outline" href="schedule.html">View schedule</a>
       </div>
     </div>
     <div class="hero-art reveal">
@@ -36,96 +41,11 @@
   </div>
 </section>
 
-<section id="schedule">
-  <div class="wrap">
-    <div class="section-label">This week</div>
-    <h2>Class schedule</h2>
-    <div class="tabs" id="dayTabs">
-      <button class="tab-btn active" data-day="mon">Mon</button>
-      <button class="tab-btn" data-day="tue">Tue</button>
-      <button class="tab-btn" data-day="wed">Wed</button>
-      <button class="tab-btn" data-day="thu">Thu</button>
-      <button class="tab-btn" data-day="fri">Fri</button>
-      <button class="tab-btn" data-day="sat">Sat</button>
-    </div>
-    <div class="class-list" id="classList"></div>
-  </div>
-</section>
-
-<section id="membership">
-  <div class="wrap">
-    <div class="section-label">Membership</div>
-    <h2>Pick your plan</h2>
-    <div class="pricing">
-      <div class="plan reveal">
-        <div class="name">Drop-in</div>
-        <div class="price">$25<span>/class</span></div>
-        <ul><li>Any single class</li><li>No commitment</li></ul>
-        <a class="btn btn-outline" href="#" style="width:100%;">Book a class</a>
-      </div>
-      <div class="plan featured reveal">
-        <div class="name">Unlimited</div>
-        <div class="price">$149<span>/mo</span></div>
-        <ul><li>Unlimited classes</li><li>Open gym access</li><li>Monthly check-in</li></ul>
-        <a class="btn btn-primary" href="#" style="width:100%;">Start free trial</a>
-      </div>
-      <div class="plan reveal">
-        <div class="name">3x / week</div>
-        <div class="price">$99<span>/mo</span></div>
-        <ul><li>12 classes / month</li><li>Open gym access</li></ul>
-        <a class="btn btn-outline" href="#" style="width:100%;">Get started</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band reveal">
-  <div class="wrap">
-    <h2>First class is on us.</h2>
-    <p>No card required for your trial class.</p>
-    <a class="btn btn-primary" href="mailto:kova.brand12@gmail.com">Book your free class</a>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
-
-<script>
-  const schedule = {
-    mon: [["6:00am","Strength","Coach Reyes"],["9:00am","Conditioning","Coach Reyes"],["5:30pm","Strength","Coach Iyer"],["6:30pm","Open Gym","—"]],
-    tue: [["6:00am","Conditioning","Coach Iyer"],["9:00am","Mobility","Coach Park"],["5:30pm","Strength","Coach Reyes"]],
-    wed: [["6:00am","Strength","Coach Reyes"],["9:00am","Conditioning","Coach Park"],["5:30pm","Strength","Coach Iyer"],["6:30pm","Open Gym","—"]],
-    thu: [["6:00am","Conditioning","Coach Iyer"],["9:00am","Mobility","Coach Park"],["5:30pm","Strength","Coach Reyes"]],
-    fri: [["6:00am","Strength","Coach Reyes"],["9:00am","Conditioning","Coach Park"],["5:00pm","Open Gym","—"]],
-    sat: [["8:00am","Team Conditioning","Coach Iyer"],["9:30am","Open Gym","—"]],
-  };
-
-  const list = document.getElementById("classList");
-  const tabs = document.querySelectorAll(".tab-btn");
-
-  function render(day) {
-    list.innerHTML = "";
-    schedule[day].forEach(([time, name, coach]) => {
-      const row = document.createElement("div");
-      row.className = "class-row";
-      row.innerHTML = `<div class="time">${time}</div><div class="name">${name}</div><div class="coach">${coach}</div>`;
-      list.appendChild(row);
-    });
-  }
-
-  tabs.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tabs.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      render(btn.dataset.day);
-    });
-  });
-
-  render("mon");
-</script>
 
 <script src="../../assets/reveal.js"></script>
 </body>

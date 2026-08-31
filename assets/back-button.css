@@ -1,0 +1,29 @@
+/* Shared "back to Kova" floating pill, used on every page of every demo site. */
+.back-to-kova {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px 9px 14px;
+  border-radius: 999px;
+  background: rgba(10,10,10,0.78);
+  color: #f5f1e6;
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform .2s cubic-bezier(.16,.8,.24,1), background .2s;
+}
+.back-to-kova:hover { transform: translateY(-2px); background: rgba(10,10,10,0.92); }
+.back-to-kova svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .back-to-kova { top: 12px; left: 12px; padding: 8px 13px 8px 11px; font-size: 0.76rem; }
+}

@@ -135,18 +135,29 @@ h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); letter-spacing: -0.02em; margin: 0
 }
 
 .work-card {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--card);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   transition: transform .35s cubic-bezier(.16,.8,.24,1), border-color .35s, box-shadow .35s;
 }
 .work-card:hover {
   transform: translateY(-6px);
   border-color: var(--gold-dim);
   box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+.work-card .stretch-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.work-card .code-link {
+  position: relative;
+  z-index: 2;
 }
 
 .work-thumb {

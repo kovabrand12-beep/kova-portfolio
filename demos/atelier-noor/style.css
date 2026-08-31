@@ -36,6 +36,8 @@ header {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
 }
 nav a {
   color: var(--muted);
@@ -44,8 +46,23 @@ nav a {
   font-size: 0.82rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  transition: color .15s;
 }
-nav a:hover { color: var(--ink); }
+nav a:hover, nav a.active { color: var(--accent); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 2px;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: var(--accent); color: #0a0a0a; }
 
 .hero {
   padding: 60px 0 80px;

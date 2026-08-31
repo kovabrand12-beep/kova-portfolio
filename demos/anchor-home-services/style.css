@@ -29,10 +29,10 @@ body {
 
 header { background: var(--navy); }
 header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.brand { color: #fff; font-weight: 800; font-size: 1.15rem; }
+.brand { color: #fff; font-weight: 800; font-size: 1.15rem; text-decoration: none; }
 .brand span { color: var(--orange); }
-nav a { color: rgba(255,255,255,0.7); text-decoration: none; margin-left: 26px; font-size: 0.9rem; }
-nav a:hover { color: #fff; }
+nav a { color: rgba(255,255,255,0.7); text-decoration: none; margin-left: 26px; font-size: 0.9rem; transition: color .15s; }
+nav a:hover, nav a.active { color: #fff; }
 
 .btn {
   display: inline-block;

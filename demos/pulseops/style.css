@@ -37,11 +37,11 @@ header {
 }
 header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; }
 .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); }
 
-nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-size: 0.9rem; }
-nav a:hover { color: var(--text); }
+nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-size: 0.9rem; transition: color .15s; }
+nav a:hover, nav a.active { color: var(--accent-2); }
 
 .btn {
   display: inline-block;

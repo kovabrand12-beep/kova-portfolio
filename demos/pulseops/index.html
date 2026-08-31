@@ -4,18 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PulseOps | Kova</title>
+<link rel="stylesheet" href="../../assets/back-button.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<a href="../../index.html" class="back-to-kova"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Kova</a>
+
 <header>
   <div class="wrap">
-    <div class="brand"><span class="dot"></span>PulseOps</div>
+    <a class="brand" href="index.html"><span class="dot"></span>PulseOps</a>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <a class="btn btn-outline" href="#pricing">Start free trial</a>
+    <a class="btn btn-outline" href="pricing.html">Start free trial</a>
   </div>
 </header>
 
@@ -25,8 +30,8 @@
     <h1 class="reveal">Know when something breaks before your customers do.</h1>
     <p class="reveal">PulseOps monitors your infrastructure and alerts the right person in seconds — with zero config for common stacks.</p>
     <div class="hero-cta reveal">
-      <a class="btn btn-primary" href="#pricing">Start free trial</a>
-      <a class="btn btn-outline" href="#features">See how it works</a>
+      <a class="btn btn-primary" href="pricing.html">Start free trial</a>
+      <a class="btn btn-outline" href="features.html">See how it works</a>
     </div>
 
     <div class="mock reveal">
@@ -44,97 +49,6 @@
         <i style="height:85%"></i><i style="height:50%"></i><i style="height:75%"></i>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Everything you need to stay ahead of downtime</h2>
-      <p>Built for small engineering teams who don't have time to babysit dashboards.</p>
-    </div>
-    <div class="features">
-      <div class="feature reveal">
-        <div class="icon">⚡</div>
-        <h3>Instant alerting</h3>
-        <p>Get paged over Slack, SMS, or phone the moment a service degrades — routed to whoever's on call.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">📈</div>
-        <h3>Status history</h3>
-        <p>Every incident logged automatically with a timeline, so postmortems write themselves.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">🔌</div>
-        <h3>Zero-config integrations</h3>
-        <p>Connect your stack in one click — AWS, GCP, Postgres, and 40+ others supported out of the box.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">🧑‍🤝‍🧑</div>
-        <h3>On-call scheduling</h3>
-        <p>Rotate on-call duty automatically and avoid alert fatigue with smart escalation rules.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">🌍</div>
-        <h3>Global checks</h3>
-        <p>Monitor from 12 regions to catch regional outages before customers report them.</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">🔒</div>
-        <h3>SOC 2 ready</h3>
-        <p>Audit logs, SSO, and role-based access built in from day one.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" style="background: var(--bg-2);">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Simple, transparent pricing</h2>
-      <p>Start free. Upgrade when your team grows.</p>
-    </div>
-    <div class="pricing">
-      <div class="plan reveal">
-        <div class="name">Starter</div>
-        <div class="price">$0<span>/mo</span></div>
-        <ul>
-          <li>3 monitors</li>
-          <li>5-minute checks</li>
-          <li>Email alerts</li>
-        </ul>
-        <a class="btn btn-outline" href="#">Get started</a>
-      </div>
-      <div class="plan featured reveal">
-        <div class="name">Team</div>
-        <div class="price">$29<span>/mo</span></div>
-        <ul>
-          <li>Unlimited monitors</li>
-          <li>1-minute checks</li>
-          <li>Slack + SMS alerts</li>
-          <li>On-call scheduling</li>
-        </ul>
-        <a class="btn btn-primary" href="#">Start free trial</a>
-      </div>
-      <div class="plan reveal">
-        <div class="name">Scale</div>
-        <div class="price">$99<span>/mo</span></div>
-        <ul>
-          <li>Everything in Team</li>
-          <li>Global regions</li>
-          <li>SSO + audit logs</li>
-        </ul>
-        <a class="btn btn-outline" href="#">Contact sales</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band reveal">
-  <div class="wrap">
-    <h2>Ready to stop finding out about outages from Twitter?</h2>
-    <p>Set up your first monitor in under two minutes.</p>
-    <a class="btn btn-primary" href="#pricing">Start free trial</a>
   </div>
 </section>
 
