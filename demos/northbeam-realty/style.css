@@ -52,10 +52,14 @@ nav a { margin-left: 26px; color: var(--muted); text-decoration: none; font-size
 .btn-outline { border: 1px solid var(--line); color: var(--ink); background: #fff; }
 .btn-outline:hover { transform: translateY(-2px); }
 
-.hero { padding: 60px 0 40px; text-align: center; }
+.hero { padding: 60px 0 40px; }
+.hero-grid { display: flex; align-items: center; gap: 56px; }
+.hero-text { flex: 1.2; min-width: 280px; }
+.hero-art { flex: 1; display: flex; justify-content: center; }
+.hero-art svg { width: 190px; height: 190px; }
 .hero .kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; font-weight: 700; color: var(--gold); }
 .hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: 16px 0; letter-spacing: -0.02em; color: var(--navy); }
-.hero p { color: var(--muted); max-width: 50ch; margin: 0 auto; }
+.hero p { color: var(--muted); max-width: 50ch; margin: 0; }
 
 .filters {
   display: flex;
@@ -140,5 +144,7 @@ footer a { color: var(--navy); font-weight: 600; }
 
 @media (max-width: 800px) {
   nav { display: none; }
+  .hero-grid { flex-direction: column-reverse; gap: 30px; text-align: center; }
+  .hero-art svg { width: 140px; height: 140px; }
   .listing-grid { grid-template-columns: 1fr; }
 }

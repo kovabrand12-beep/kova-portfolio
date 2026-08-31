@@ -57,6 +57,10 @@ nav a:hover { color: var(--ink); }
   padding: 70px 0 90px;
   border-bottom: 1px solid var(--line);
 }
+.hero-grid { display: flex; align-items: center; gap: 56px; }
+.hero-text { flex: 1.2; min-width: 280px; }
+.hero-art { flex: 1; display: flex; justify-content: center; }
+.hero-art svg { width: 210px; height: 210px; }
 .hero .kicker { color: var(--yellow); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
 .hero h1 {
   font-size: clamp(2.6rem, 7vw, 5rem);
@@ -129,6 +133,8 @@ footer a { color: var(--yellow); }
 
 @media (max-width: 800px) {
   nav { display: none; }
+  .hero-grid { flex-direction: column-reverse; gap: 30px; text-align: center; }
+  .hero-art svg { width: 150px; height: 150px; }
   .pricing { grid-template-columns: 1fr; }
   .class-row { flex-wrap: wrap; gap: 6px; }
 }

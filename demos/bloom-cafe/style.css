@@ -61,9 +61,12 @@ nav a {
 
 .hero {
   padding: 90px 0 70px;
-  text-align: center;
   background: radial-gradient(ellipse at top, #fff6ea 0%, var(--cream) 70%);
 }
+.hero-grid { display: flex; align-items: center; gap: 56px; }
+.hero-text { flex: 1.2; min-width: 280px; }
+.hero-art { flex: 1; display: flex; justify-content: center; }
+.hero-art svg { width: 200px; height: 200px; }
 .hero .kicker {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-transform: uppercase;
@@ -80,7 +83,7 @@ nav a {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--soft);
   max-width: 46ch;
-  margin: 0 auto 32px;
+  margin: 0 0 32px;
   font-size: 1.05rem;
 }
 
@@ -153,4 +156,6 @@ footer a { color: var(--terracotta); }
 @media (max-width: 760px) {
   nav { display: none; }
   .menu-grid, .info-grid { grid-template-columns: 1fr; }
+  .hero-grid { flex-direction: column-reverse; gap: 30px; text-align: center; }
+  .hero-art svg { width: 150px; height: 150px; }
 }

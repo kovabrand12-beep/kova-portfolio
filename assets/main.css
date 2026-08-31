@@ -155,10 +155,6 @@ h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); letter-spacing: -0.02em; margin: 0
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.94);
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: -0.02em;
   overflow: hidden;
 }
 .work-thumb::after {
@@ -167,6 +163,15 @@ h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); letter-spacing: -0.02em; margin: 0
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
 }
+.work-thumb svg {
+  width: 88px;
+  height: 88px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+  transition: transform .4s cubic-bezier(.16,.8,.24,1);
+}
+.work-card:hover .work-thumb svg { transform: scale(1.08); }
 
 .work-body { padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .work-body h3 { margin: 0; font-size: 1.25rem; font-weight: 700; }

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember & Oak | Kova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Ember <span>&amp;</span> Oak</div>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn" href="#reserve">Reserve a table</a>
+  </div>
+</header>
+
+<section style="border-top:none;">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="kicker reveal">Wood-fired steakhouse</div>
+      <h1 class="reveal">Dinner, done properly.</h1>
+      <p class="reveal">Ember &amp; Oak is a small wood-fired steakhouse focused on dry-aged cuts, live-fire cooking, and a short, seasonal wine list.</p>
+      <div class="hero-cta reveal">
+        <a class="btn" href="#reserve">Reserve a table</a>
+        <a class="btn btn-outline" href="#menu">View the menu</a>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 100 100"><path d="M50 16C36 34 26 48 26 62a24 24 0 0 0 48 0c0-10-7-15-9-24-1 9-8 11-7 3 1-12 4-19-8-25z" fill="#d1552e"/><path d="M50 40c-6 8-10 15-10 21a10 10 0 0 0 20 0c0-4-3-6-4-10 0 4-3 5-3 1 0-5 1-8-3-12z" fill="#e87a4d"/></svg>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Chef's selections</span>
+      <h2>From the fire</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <div><h3>Dry-aged Ribeye</h3><p>45-day aged, bone-in, finished over oak.</p></div>
+        <div class="price">$58</div>
+      </div>
+      <div class="menu-item reveal">
+        <div><h3>Whole Grilled Branzino</h3><p>Charred lemon, salsa verde.</p></div>
+        <div class="price">$36</div>
+      </div>
+      <div class="menu-item reveal">
+        <div><h3>Charred Octopus</h3><p>White bean purée, chili oil.</p></div>
+        <div class="price">$24</div>
+      </div>
+      <div class="menu-item reveal">
+        <div><h3>Roasted Bone Marrow</h3><p>Herb gremolata, grilled sourdough.</p></div>
+        <div class="price">$19</div>
+      </div>
+      <div class="menu-item reveal">
+        <div><h3>Fire-roasted Vegetables</h3><p>Seasonal selection, whipped feta.</p></div>
+        <div class="price">$16</div>
+      </div>
+      <div class="menu-item reveal">
+        <div><h3>Basque Cheesecake</h3><p>Burnt top, vanilla bean.</p></div>
+        <div class="price">$14</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserve">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Reservations</span>
+      <h2>Book a table</h2>
+    </div>
+    <div class="reserve-box reveal">
+      <div class="reserve-row">
+        <div>
+          <label>Date</label>
+          <input type="date" id="resDate">
+        </div>
+        <div>
+          <label>Time</label>
+          <select id="resTime">
+            <option>5:30 PM</option>
+            <option>6:00 PM</option>
+            <option>6:30 PM</option>
+            <option>7:00 PM</option>
+            <option>7:30 PM</option>
+            <option>8:00 PM</option>
+            <option>8:30 PM</option>
+          </select>
+        </div>
+        <div>
+          <label>Party size</label>
+          <select id="resSize">
+            <option>2 guests</option>
+            <option>3 guests</option>
+            <option>4 guests</option>
+            <option>5 guests</option>
+            <option>6+ guests</option>
+          </select>
+        </div>
+      </div>
+      <a class="btn" href="#" id="resCheck" style="width:100%; text-align:center; box-sizing:border-box;">Check availability</a>
+      <div class="reserve-result" id="resResult"></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-band" id="visit">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="reveal">
+        <h3>Hours</h3>
+        <p>Tue–Sun: 5pm – 11pm<br>Closed Mondays</p>
+      </div>
+      <div class="reveal">
+        <h3>Location</h3>
+        <p>88 Kiln Street<br>Foundry District</p>
+      </div>
+      <div class="reveal">
+        <h3>Contact</h3>
+        <p>kova.brand12@gmail.com<br>(555) 040-1188</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built by <a href="../../index.html">Kova</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('resCheck').addEventListener('click', (e) => {
+    e.preventDefault();
+    const date = document.getElementById('resDate').value;
+    const time = document.getElementById('resTime').value;
+    const size = document.getElementById('resSize').value;
+    const result = document.getElementById('resResult');
+    if (!date) {
+      result.textContent = 'Pick a date to check availability.';
+    } else {
+      const d = new Date(date + 'T00:00:00');
+      const formatted = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      result.textContent = `A table for ${size} is available on ${formatted} at ${time}.`;
+    }
+    result.classList.add('show');
+  });
+</script>
+
+<script src="../../assets/reveal.js"></script>
+</body>
+</html>
