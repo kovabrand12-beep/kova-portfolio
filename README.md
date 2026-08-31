@@ -1,6 +1,6 @@
-# Flowline Digital — Portfolio
+# Kova — Portfolio
 
-Portfolio site for Flowline Digital, a small web design/development studio.
+Portfolio site for Kova, a small web design/development studio.
 
 ## What this is
 
