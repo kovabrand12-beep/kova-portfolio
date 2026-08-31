@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northbeam Realty — Concept Project by Flowline Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap inner">
+    <div class="brand">Northbeam <span>Realty</span></div>
+    <nav>
+      <a href="#listings">Listings</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="#contact">Talk to an agent</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Coastal & suburban listings</div>
+    <h1>Find the next place you'll call home.</h1>
+    <p>Northbeam Realty represents homes across the coast and surrounding suburbs — from starter condos to family houses.</p>
+  </div>
+</section>
+
+<section id="listings">
+  <div class="wrap">
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="house">Houses</button>
+      <button class="filter-btn" data-type="condo">Condos</button>
+      <button class="filter-btn" data-type="townhouse">Townhouses</button>
+    </div>
+    <div class="listing-grid" id="listingGrid"></div>
+    <div class="empty-state" id="emptyState">No listings match that filter right now.</div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0;">
+  <div class="wrap" style="text-align:center;">
+    <h2 style="color:var(--navy);">Have a property to sell, or looking to buy?</h2>
+    <p style="color:var(--muted); max-width:46ch; margin:12px auto 26px;">Reach out and an agent will follow up within a business day.</p>
+    <a class="btn btn-primary" href="mailto:hello@northbeamrealty.example">Email hello@northbeamrealty.example</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Concept project by <a href="../../index.html">Flowline Digital</a> — Northbeam Realty is a fictional agency built to demonstrate a filterable listings UI.
+  </div>
+</footer>
+
+<script>
+  const listings = [
+    { type: "house", price: "$685,000", addr: "412 Alder Court", meta: "4 bd · 3 ba · 2,340 sqft", grad: "135deg,#2c3e5c,#0f1723" },
+    { type: "condo", price: "$329,000", addr: "88 Harbor View #6B", meta: "2 bd · 2 ba · 1,020 sqft", grad: "135deg,#3a4f6b,#182233" },
+    { type: "townhouse", price: "$459,000", addr: "27 Cedarbrook Row", meta: "3 bd · 2.5 ba · 1,680 sqft", grad: "135deg,#4a5d3a,#1c2417" },
+    { type: "house", price: "$812,500", addr: "1560 Ridgeline Drive", meta: "5 bd · 4 ba · 3,120 sqft", grad: "135deg,#5c4a2c,#241d10" },
+    { type: "condo", price: "$275,000", addr: "410 Marina Plaza #12", meta: "1 bd · 1 ba · 740 sqft", grad: "135deg,#39506b,#141c28" },
+    { type: "townhouse", price: "$399,000", addr: "9 Willowmere Lane", meta: "3 bd · 2 ba · 1,540 sqft", grad: "135deg,#4a3f5c,#1c1824" },
+    { type: "house", price: "$549,900", addr: "231 Foxglove Street", meta: "3 bd · 2 ba · 1,860 sqft", grad: "135deg,#2c4a4a,#101f1f" },
+    { type: "condo", price: "$395,000", addr: "77 Seaport Tower #21A", meta: "2 bd · 2 ba · 1,150 sqft", grad: "135deg,#3a3a5c,#161624" },
+  ];
+
+  const grid = document.getElementById("listingGrid");
+  const empty = document.getElementById("emptyState");
+
+  function render(filter) {
+    const shown = filter === "all" ? listings : listings.filter(l => l.type === filter);
+    grid.innerHTML = "";
+    empty.style.display = shown.length ? "none" : "block";
+    shown.forEach(l => {
+      const el = document.createElement("div");
+      el.className = "listing";
+      el.innerHTML = `
+        <div class="listing-img" style="background: linear-gradient(${l.grad});">🏠</div>
+        <div class="listing-body">
+          <div class="listing-price">${l.price}</div>
+          <div class="listing-addr">${l.addr}</div>
+          <div class="listing-meta">${l.meta}</div>
+          <span class="listing-tag">${l.type}</span>
+        </div>
+      `;
+      grid.appendChild(el);
+    });
+  }
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      render(btn.dataset.type);
+    });
+  });
+
+  render("all");
+</script>
+
+</body>
+</html>
