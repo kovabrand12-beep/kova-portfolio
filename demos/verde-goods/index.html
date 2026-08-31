@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verde Goods — Concept Project by Kova</title>
+<title>Verde Goods | Kova</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,9 +21,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="kicker">Plant goods, delivered</div>
-    <h1>Low-maintenance plants for real life.</h1>
-    <p>Hand-picked houseplants and care essentials, shipped with a plant that actually survives your apartment.</p>
+    <div class="kicker reveal">Plant goods, delivered</div>
+    <h1 class="reveal">Low-maintenance plants for real life.</h1>
+    <p class="reveal">Hand-picked houseplants and care essentials, shipped with a plant that actually survives your apartment.</p>
   </div>
 </section>
 
@@ -37,15 +37,15 @@
 <section class="value-band" id="about">
   <div class="wrap">
     <div class="value-grid">
-      <div>
+      <div class="reveal">
         <h3>Grown, not warehoused</h3>
         <p>Every plant ships direct from partner growers, not a distribution center.</p>
       </div>
-      <div>
+      <div class="reveal">
         <h3>30-day guarantee</h3>
         <p>If it doesn't make it, we replace it — no questions asked.</p>
       </div>
-      <div>
+      <div class="reveal">
         <h3>Care guides included</h3>
         <p>Every order comes with a plain-language care card, not a QR code.</p>
       </div>
@@ -55,7 +55,7 @@
 
 <footer>
   <div class="wrap">
-    Concept project by <a href="../../index.html">Kova</a> — Verde Goods is a fictional store built to demonstrate a catalog / cart UI.
+    Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
 
@@ -80,7 +80,7 @@
 
   products.forEach(p => {
     const el = document.createElement("div");
-    el.className = "product";
+    el.className = "product reveal";
     el.innerHTML = `
       <div class="product-img">${p.emoji}</div>
       <div class="product-info">
@@ -103,5 +103,6 @@
   });
 </script>
 
+<script src="../../assets/reveal.js"></script>
 </body>
 </html>

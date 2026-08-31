@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Summit Fitness — Concept Project by Kova</title>
+<title>Summit Fitness | Kova</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,10 +21,10 @@
 
 <section class="hero" style="border-top:1px solid var(--line);">
   <div class="wrap">
-    <div class="kicker">Strength & conditioning gym</div>
-    <h1>Train like it matters.</h1>
-    <p>Small-group strength training and conditioning classes, six days a week. No fluff, no mirrors-and-music theatrics — just coached, programmed training.</p>
-    <div class="hero-cta">
+    <div class="kicker reveal">Strength & conditioning gym</div>
+    <h1 class="reveal">Train like it matters.</h1>
+    <p class="reveal">Small-group strength training and conditioning classes, six days a week. No fluff, no mirrors-and-music theatrics — just coached, programmed training.</p>
+    <div class="hero-cta reveal">
       <a class="btn btn-primary" href="#membership">Start free trial</a>
       <a class="btn btn-outline" href="#schedule">View schedule</a>
     </div>
@@ -52,19 +52,19 @@
     <div class="section-label">Membership</div>
     <h2>Pick your plan</h2>
     <div class="pricing">
-      <div class="plan">
+      <div class="plan reveal">
         <div class="name">Drop-in</div>
         <div class="price">$25<span>/class</span></div>
         <ul><li>Any single class</li><li>No commitment</li></ul>
         <a class="btn btn-outline" href="#" style="width:100%;">Book a class</a>
       </div>
-      <div class="plan featured">
+      <div class="plan featured reveal">
         <div class="name">Unlimited</div>
         <div class="price">$149<span>/mo</span></div>
         <ul><li>Unlimited classes</li><li>Open gym access</li><li>Monthly check-in</li></ul>
         <a class="btn btn-primary" href="#" style="width:100%;">Start free trial</a>
       </div>
-      <div class="plan">
+      <div class="plan reveal">
         <div class="name">3x / week</div>
         <div class="price">$99<span>/mo</span></div>
         <ul><li>12 classes / month</li><li>Open gym access</li></ul>
@@ -74,7 +74,7 @@
   </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-band reveal">
   <div class="wrap">
     <h2>First class is on us.</h2>
     <p>No card required for your trial class.</p>
@@ -84,7 +84,7 @@
 
 <footer>
   <div class="wrap">
-    Concept project by <a href="../../index.html">Kova</a> — Summit Fitness is a fictional gym built to demonstrate a bold, high-contrast landing page.
+    Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
 
@@ -122,5 +122,6 @@
   render("mon");
 </script>
 
+<script src="../../assets/reveal.js"></script>
 </body>
 </html>

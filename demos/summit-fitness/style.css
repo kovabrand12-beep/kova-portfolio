@@ -9,6 +9,18 @@
 
 * { box-sizing: border-box; }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -34,9 +46,12 @@ nav a:hover { color: var(--ink); }
   letter-spacing: 0.03em;
   font-size: 0.85rem;
   text-decoration: none;
+  transition: transform .2s cubic-bezier(.16,.8,.24,1), box-shadow .2s;
 }
 .btn-primary { background: var(--yellow); color: #101010; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(232,255,91,0.25); }
 .btn-outline { border: 2px solid var(--ink); color: var(--ink); }
+.btn-outline:hover { transform: translateY(-2px); }
 
 .hero {
   padding: 70px 0 90px;
@@ -69,6 +84,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); text-transform: uppercase; font-weig
   font-size: 0.85rem;
   text-transform: uppercase;
   cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
 }
 .tab-btn.active { background: var(--yellow); color: #101010; border-color: var(--yellow); }
 
@@ -81,7 +97,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); text-transform: uppercase; font-weig
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px 22px;
+  animation: rowIn .4s cubic-bezier(.16,.8,.24,1) backwards;
+  transition: border-color .2s;
 }
+.class-row:hover { border-color: var(--yellow); }
 .class-row .time { font-weight: 800; color: var(--yellow); width: 90px; flex-shrink: 0; }
 .class-row .name { font-weight: 700; flex: 1; }
 .class-row .coach { color: var(--muted); font-size: 0.88rem; }

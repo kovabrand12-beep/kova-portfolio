@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kova — Web Design & Development Studio</title>
-<meta name="description" content="Kova designs and builds fast, clean websites for small businesses and startups.">
+<title>Kova — Growth Engineered</title>
+<meta name="description" content="Kova builds websites and digital systems designed to bring you customers on demand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
@@ -12,75 +15,52 @@
 <header class="site">
   <div class="wrap">
     <a class="logo" href="#top">
-      <span class="mark"></span>
-      Kova
+      <svg class="mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e3c581"/>
+            <stop offset="100%" stop-color="#8a7440"/>
+          </linearGradient>
+        </defs>
+        <rect width="40" height="40" rx="10" fill="#111"/>
+        <path d="M13 9h4.2v9.4L25.4 9H30l-9.6 11.3L30.6 31H25.8L17.2 21.3V31H13z" fill="url(#goldGrad)"/>
+      </svg>
+      <span class="word">KOVA</span>
     </a>
     <nav class="primary">
       <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="#contact">Start a project</a>
+    <a class="btn btn-primary btn-sm" href="#contact">Contact us</a>
   </div>
 </header>
 
 <section class="hero" id="top">
   <div class="wrap">
-    <span class="eyebrow">Web Design & Development</span>
-    <h1>Clean, fast websites built for small businesses and startups.</h1>
-    <p class="lead">Kova is a small studio focused on marketing sites, landing pages, and lightweight web apps — designed with intent, built without bloat.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#contact">Get a quote</a>
-      <a class="btn btn-ghost" href="#work">See the work</a>
-    </div>
-    <p class="honesty-note">Studio note: this is a new portfolio. The projects below are self-directed concept builds made to demonstrate range and code quality — not client engagements — and every one links to real, working source code on GitHub.</p>
-  </div>
-</section>
-
-<section id="services" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Services</span>
-      <h2>What I build</h2>
-      <p>Focused on the web work small teams actually need — no unnecessary scope, no bloated stacks.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">🧭</div>
-        <h3>Marketing sites</h3>
-        <p>Landing pages and multi-page sites that load fast and convert — semantic HTML, hand-tuned CSS, no framework overhead unless it earns its place.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🛠️</div>
-        <h3>Product & SaaS pages</h3>
-        <p>Pricing pages, feature pages, and onboarding flows built to communicate value clearly and integrate cleanly with your app.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🛒</div>
-        <h3>Storefronts & catalogs</h3>
-        <p>Lightweight e-commerce and product catalog builds, wired up to the platform that fits the business — not the trendiest one.</p>
-      </div>
+    <span class="tagline reveal">Growth Engineered.</span>
+    <h1 class="reveal">Websites and digital systems built to perform.</h1>
+    <p class="lead reveal">We build systems that bring you customers on demand.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#work">See our work</a>
+      <a class="btn btn-ghost" href="#contact">Contact us</a>
     </div>
   </div>
 </section>
 
 <section id="work">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Selected Work</span>
-      <h2>Concept projects</h2>
-      <p>Self-initiated builds, each covering a different kind of site a real client might need. Every card links to a live demo and the full source on GitHub.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Work</span>
+      <h2>Selected builds</h2>
+      <p>A range of digital work — each one linking to a live build and full source.</p>
     </div>
     <div class="work-grid">
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#7a3b2e,#c98a4b);">Bloom Café</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>Bloom Café</h3>
-          <p>Restaurant marketing site with menu highlights, hours, and a reservation call-to-action. Warm editorial styling.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS</span><span class="tag">Responsive</span><span class="tag">Local business</span></div>
+          <p>A restaurant site with menu highlights, hours, and a reservation flow.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/bloom-cafe/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/bloom-cafe" target="_blank" rel="noopener">View code</a>
@@ -88,13 +68,11 @@
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#0b1220,#2c3e6b);">PulseOps</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>PulseOps</h3>
-          <p>SaaS product landing page — hero, feature grid, and pricing tiers for a fictional ops-monitoring tool.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS</span><span class="tag">SaaS</span><span class="tag">Pricing UI</span></div>
+          <p>A SaaS product landing page with a feature grid and pricing tiers.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/pulseops/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/pulseops" target="_blank" rel="noopener">View code</a>
@@ -102,13 +80,11 @@
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#1f3d2b,#5c8a5c);">Verde Goods</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>Verde Goods</h3>
-          <p>Minimal e-commerce catalog layout with a product grid and a detail view for a fictional plant-goods store.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">E-commerce</span><span class="tag">Catalog UI</span></div>
+          <p>A minimal e-commerce catalog with a live product grid and cart interaction.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/verde-goods/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/verde-goods" target="_blank" rel="noopener">View code</a>
@@ -116,13 +92,11 @@
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#111,#3a3a3a);">Atelier Noor</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>Atelier Noor</h3>
-          <p>Dark-mode portfolio site for a fictional photographer — bold type, image grid, and a contact section.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS</span><span class="tag">Portfolio</span><span class="tag">Dark UI</span></div>
+          <p>A dark-mode photography portfolio with bold type and an image grid.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/atelier-noor/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/atelier-noor" target="_blank" rel="noopener">View code</a>
@@ -130,13 +104,11 @@
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#101010,#3a3a1a);">Summit Fitness</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>Summit Fitness</h3>
-          <p>High-contrast gym landing page with an interactive weekly class schedule and membership pricing.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">Fitness</span><span class="tag">Interactive schedule</span></div>
+          <p>A high-contrast gym site with an interactive weekly class schedule.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/summit-fitness/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/summit-fitness" target="_blank" rel="noopener">View code</a>
@@ -144,13 +116,11 @@
         </div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <div class="work-thumb" style="background: linear-gradient(135deg,#1c2b4a,#b98d3e);">Northbeam Realty</div>
         <div class="work-body">
-          <span class="badge">Concept project</span>
           <h3>Northbeam Realty</h3>
-          <p>Real estate listings page for a fictional agency, with a working filter by property type.</p>
-          <div class="tag-row"><span class="tag">HTML/CSS/JS</span><span class="tag">Real estate</span><span class="tag">Filter UI</span></div>
+          <p>A real estate listings page with a working filter by property type.</p>
           <div class="work-links">
             <a class="btn btn-ghost btn-sm" href="demos/northbeam-realty/index.html">Live demo</a>
             <a class="btn btn-ghost btn-sm" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio/tree/main/demos/northbeam-realty" target="_blank" rel="noopener">View code</a>
@@ -162,50 +132,26 @@
   </div>
 </section>
 
-<section id="process" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Process</span>
-      <h2>How a project runs</h2>
-      <p>Same process on every build, whether it's a one-page site or a small app.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <h3>Scope</h3>
-        <p>A short call to pin down what the site needs to do and who it's for.</p>
-      </div>
-      <div class="step">
-        <h3>Design</h3>
-        <p>Layout and visual direction, shared early so there are no surprises.</p>
-      </div>
-      <div class="step">
-        <h3>Build</h3>
-        <p>Hand-built, semantic, fast-loading code — no unnecessary dependencies.</p>
-      </div>
-      <div class="step">
-        <h3>Launch</h3>
-        <p>Deployed, tested across devices, and handed off with the source.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap">
-    <div class="contact-box">
-      <h2>Have a site that needs building?</h2>
-      <p>Tell me what you're trying to launch and I'll follow up with scope and a quote.</p>
+    <div class="contact-box reveal">
+      <h2>Have something to build?</h2>
+      <p>Tell us what you're trying to launch and we'll follow up directly.</p>
       <a class="btn btn-primary" href="mailto:kova.brand12@gmail.com">Email kova.brand12@gmail.com</a>
     </div>
   </div>
 </section>
 
 <footer class="site">
-  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap;">
-    <span>© 2026 Kova</span>
-    <a href="https://github.com/kovabrand12-beep/flowline-digital-portfolio" target="_blank" rel="noopener">GitHub</a>
+  <div class="wrap">
+    <div class="foot-top">
+      <span>© 2026 Kova</span>
+      <a class="gh" href="https://github.com/kovabrand12-beep/flowline-digital-portfolio" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="note">Work shown is self-initiated studio work, built to demonstrate range and code quality.</div>
   </div>
 </footer>
 
+<script src="assets/reveal.js"></script>
 </body>
 </html>
