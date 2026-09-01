@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — PulseOps | Kova</title>
+<title>Book a Demo — PulseOps | Kova</title>
 <link rel="stylesheet" href="../../assets/back-button.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -24,11 +24,48 @@
   </div>
 </header>
 
-<section class="cta-band reveal" style="padding-top:90px;">
-  <div class="wrap">
-    <h2>Ready to stop finding out about outages from Twitter?</h2>
-    <p>Set up your first monitor in under two minutes, or talk to sales about a Scale plan.</p>
-    <a class="btn btn-primary" href="mailto:kova.brand12@gmail.com">Email kova.brand12@gmail.com</a>
+<section style="padding-top:90px;">
+  <div class="wrap" style="max-width:560px;">
+    <div class="section-head" style="text-align:left; margin-bottom:34px;">
+      <h2>Book a demo</h2>
+      <p>Walk through PulseOps with someone from the team — 20 minutes, no pressure.</p>
+    </div>
+
+    <div class="mock" style="text-align:left;">
+      <div class="field">
+        <label>Team size</label>
+        <select id="dmSize">
+          <option>1–5 engineers</option>
+          <option>6–20 engineers</option>
+          <option>21–50 engineers</option>
+          <option>50+ engineers</option>
+        </select>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label>Preferred date</label>
+          <input type="date" id="dmDate">
+        </div>
+        <div class="field">
+          <label>Preferred time</label>
+          <select id="dmTime">
+            <option>9:00 AM</option>
+            <option>11:00 AM</option>
+            <option>1:00 PM</option>
+            <option>3:00 PM</option>
+            <option>5:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Work email</label>
+        <input type="email" id="dmEmail" placeholder="you@company.com">
+      </div>
+      <a href="#" id="dmSubmit" class="btn btn-primary" style="display:block; text-align:center; width:100%; box-sizing:border-box;">Book demo call</a>
+      <div class="dm-result" id="dmResult"></div>
+    </div>
+
+    <p style="color:var(--muted); margin-top:24px; font-size:0.9rem;">Prefer async? <a href="mailto:kova.brand12@gmail.com" style="color:var(--accent-2);">kova.brand12@gmail.com</a></p>
   </div>
 </section>
 
@@ -37,6 +74,24 @@
     Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById('dmSubmit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const size = document.getElementById('dmSize').value;
+    const date = document.getElementById('dmDate').value;
+    const time = document.getElementById('dmTime').value;
+    const result = document.getElementById('dmResult');
+    if (!date) {
+      result.textContent = 'Pick a date to book your demo call.';
+    } else {
+      const d = new Date(date + 'T00:00:00');
+      const formatted = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      result.innerHTML = `Demo booked for <strong>${formatted} at ${time}</strong> — calendar invite on its way. (Team size noted: ${size}.)`;
+    }
+    result.classList.add('show');
+  });
+</script>
 
 <script src="../../assets/reveal.js"></script>
 </body>

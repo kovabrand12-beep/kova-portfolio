@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now — Lumina Medspa | Kova</title>
+<link rel="stylesheet" href="../../assets/back-button.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="../../index.html" class="back-to-kova"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Kova</a>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">Lumina <span>Medspa</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="book.html" class="active">Book Now</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn" href="book.html">Book a consult</a>
+  </div>
+</header>
+
+<section style="padding-top:60px;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Book online</span>
+      <h2>Request an appointment</h2>
+      <p>Pick a treatment and a time that works — we'll confirm by text within one business day.</p>
+    </div>
+
+    <div class="booking-shell">
+      <div class="booking-photo reveal" style="background-image:url('https://images.unsplash.com/photo-1611920630905-426e08849c32?w=800&q=75&auto=format&fit=crop');"></div>
+
+      <div class="booking-box reveal">
+        <div class="step-label">Appointment details</div>
+
+        <div class="field">
+          <label>Treatment</label>
+          <select id="bkTreatment">
+            <option>Free consultation</option>
+            <option>Anti-wrinkle injections — $280+</option>
+            <option>HydraFacial — $175+</option>
+            <option>Laser hair reduction — $95+</option>
+            <option>Dermal filler — $450+</option>
+            <option>Chemical peel — $140+</option>
+            <option>Microneedling — $220+</option>
+          </select>
+        </div>
+
+        <div class="two-col">
+          <div class="field">
+            <label>Preferred date</label>
+            <input type="date" id="bkDate">
+          </div>
+          <div class="field">
+            <label>Preferred time</label>
+            <select id="bkTime">
+              <option>10:00 AM</option>
+              <option>11:30 AM</option>
+              <option>1:00 PM</option>
+              <option>2:30 PM</option>
+              <option>4:00 PM</option>
+              <option>5:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="field">
+            <label>Full name</label>
+            <input type="text" id="bkName" placeholder="Jane Smith">
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input type="tel" id="bkPhone" placeholder="(555) 555-5555">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Anything we should know?</label>
+          <input type="text" id="bkNotes" placeholder="First time client, allergies, etc. (optional)">
+        </div>
+
+        <a href="#" class="btn" id="bkSubmit" style="width:100%; text-align:center; box-sizing:border-box; display:block;">Request appointment</a>
+        <div class="booking-result" id="bkResult"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built by <a href="../../index.html">Kova</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('bkSubmit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const treatment = document.getElementById('bkTreatment').value;
+    const date = document.getElementById('bkDate').value;
+    const time = document.getElementById('bkTime').value;
+    const name = document.getElementById('bkName').value.trim();
+    const result = document.getElementById('bkResult');
+
+    if (!name || !date) {
+      result.innerHTML = 'Please add your name and a preferred date.';
+    } else {
+      const d = new Date(date + 'T00:00:00');
+      const formatted = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      result.innerHTML = `Thanks, ${name.split(' ')[0]} — request received for <span class="confirm-time">${treatment} on ${formatted} at ${time}</span>. We'll text to confirm within one business day.`;
+    }
+    result.classList.add('show');
+  });
+</script>
+
+<script src="../../assets/reveal.js"></script>
+</body>
+</html>

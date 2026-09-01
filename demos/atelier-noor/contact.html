@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Atelier Noor | Kova</title>
+<title>Book a Session — Atelier Noor | Kova</title>
 <link rel="stylesheet" href="../../assets/back-button.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -23,10 +23,48 @@
   </header>
 </div>
 
-<section class="contact-block reveal">
-  <div class="wrap">
-    <h2>Available for commissions</h2>
-    <a class="email" href="mailto:kova.brand12@gmail.com">kova.brand12@gmail.com</a>
+<section style="padding-top:20px;">
+  <div class="wrap" style="max-width:600px;">
+    <div class="section-label reveal">Available for commissions</div>
+    <h2 class="reveal" style="font-weight:300; margin-bottom:30px;">Book a session</h2>
+
+    <div class="booking-card reveal">
+      <div class="field">
+        <label>Session type</label>
+        <select id="npType">
+          <option>Portrait session</option>
+          <option>Editorial / brand shoot</option>
+          <option>Interiors / architecture</option>
+          <option>Event coverage</option>
+        </select>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label>Preferred date</label>
+          <input type="date" id="npDate">
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <select id="npLocation">
+            <option>Toronto</option>
+            <option>Lisbon</option>
+            <option>Travel (fee applies)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Name</label>
+        <input type="text" id="npName" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="npEmail" placeholder="you@example.com">
+      </div>
+      <a href="#" id="npSubmit" class="btn-outline" style="display:block; text-align:center; width:100%; box-sizing:border-box;">Request booking</a>
+      <div class="booking-result" id="npResult"></div>
+    </div>
+
+    <p style="color:var(--muted); margin-top:24px; font-size:0.9rem;">Prefer email? <a href="mailto:kova.brand12@gmail.com" style="color:var(--accent);">kova.brand12@gmail.com</a></p>
   </div>
 </section>
 
@@ -35,6 +73,24 @@
     Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById('npSubmit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const type = document.getElementById('npType').value;
+    const date = document.getElementById('npDate').value;
+    const name = document.getElementById('npName').value.trim();
+    const result = document.getElementById('npResult');
+    if (!name || !date) {
+      result.textContent = 'Add your name and a preferred date to request a booking.';
+    } else {
+      const d = new Date(date + 'T00:00:00');
+      const formatted = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      result.innerHTML = `Thanks, ${name.split(' ')[0]} — request received for a <strong>${type}</strong> on ${formatted}. A reply will follow within two days.`;
+    }
+    result.classList.add('show');
+  });
+</script>
 
 <script src="../../assets/reveal.js"></script>
 </body>

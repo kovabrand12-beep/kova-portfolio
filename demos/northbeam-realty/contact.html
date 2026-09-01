@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Northbeam Realty | Kova</title>
+<title>Schedule a Showing — Northbeam Realty | Kova</title>
 <link rel="stylesheet" href="../../assets/back-button.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -20,15 +20,59 @@
       <a href="about.html">About</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
-    <a class="btn btn-primary" href="contact.html">Talk to an agent</a>
+    <a class="btn btn-primary" href="contact.html">Schedule a showing</a>
   </div>
 </header>
 
-<section style="padding-top:80px; padding-bottom:80px;">
-  <div class="wrap" style="text-align:center;">
-    <h2 style="color:var(--navy);">Have a property to sell, or looking to buy?</h2>
-    <p style="color:var(--muted); max-width:46ch; margin:12px auto 26px;">Reach out and an agent will follow up within a business day.</p>
-    <a class="btn btn-primary" href="mailto:kova.brand12@gmail.com">Email kova.brand12@gmail.com</a>
+<section style="padding-top:60px; padding-bottom:80px;">
+  <div class="wrap" style="max-width:640px;">
+    <div style="text-align:center; margin-bottom:36px;">
+      <h2 style="color:var(--navy);">Schedule a showing</h2>
+      <p style="color:var(--muted);">Tell us which property and when — an agent will confirm within a business day. General questions welcome too.</p>
+    </div>
+    <div class="showing-box">
+      <div class="showing-row">
+        <div class="field">
+          <label>Property of interest</label>
+          <select id="swProperty">
+            <option>412 Alder Court</option>
+            <option>88 Harbor View #6B</option>
+            <option>27 Cedarbrook Row</option>
+            <option>1560 Ridgeline Drive</option>
+            <option>Not sure yet — general inquiry</option>
+          </select>
+        </div>
+      </div>
+      <div class="showing-row two-col">
+        <div class="field">
+          <label>Preferred date</label>
+          <input type="date" id="swDate">
+        </div>
+        <div class="field">
+          <label>Preferred time</label>
+          <select id="swTime">
+            <option>10:00 AM</option>
+            <option>12:00 PM</option>
+            <option>2:00 PM</option>
+            <option>4:00 PM</option>
+            <option>6:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="showing-row two-col">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" id="swName" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" id="swPhone" placeholder="(555) 555-5555">
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary" id="swSubmit" style="width:100%; text-align:center; box-sizing:border-box; display:block;">Request showing</a>
+      <div class="showing-result" id="swResult"></div>
+    </div>
+    <p style="text-align:center; color:var(--muted); margin-top:26px; font-size:0.9rem;">Prefer email? <a href="mailto:kova.brand12@gmail.com" style="color:var(--navy); font-weight:600;">kova.brand12@gmail.com</a></p>
   </div>
 </section>
 
@@ -37,6 +81,25 @@
     Built by <a href="../../index.html">Kova</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById('swSubmit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const property = document.getElementById('swProperty').value;
+    const date = document.getElementById('swDate').value;
+    const time = document.getElementById('swTime').value;
+    const name = document.getElementById('swName').value.trim();
+    const result = document.getElementById('swResult');
+    if (!name || !date) {
+      result.textContent = 'Please add your name and a preferred date.';
+    } else {
+      const d = new Date(date + 'T00:00:00');
+      const formatted = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      result.innerHTML = `Thanks, ${name.split(' ')[0]} — showing requested for <strong>${property}</strong> on ${formatted} at ${time}. An agent will confirm shortly.`;
+    }
+    result.classList.add('show');
+  });
+</script>
 
 <script src="../../assets/reveal.js"></script>
 </body>
