@@ -1,0 +1,113 @@
+# Kova — Apache configuration for Hostinger shared hosting.
+#
+# Test changes with `npm run htaccess`, which serves the built site through a
+# real Apache and asserts every route and redirect. PHP's built-in server
+# ignores this file completely and will report a broken rewrite as fine.
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ---------------------------------------------------------------- canonical
+# One hostname, one scheme. Split link credit between http/https or
+# www/non-www and Google divides the ranking signal between them.
+
+# Force HTTPS. X-Forwarded-Proto is checked as well as %{HTTPS} because when
+# TLS is terminated at a proxy or CDN, %{HTTPS} is "off" on the origin even
+# though the visitor arrived over https — without this second condition the
+# rule redirects to itself forever.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Strip www. Kept as its own rule rather than folded into the one above,
+# because "(not https AND not forwarded https) OR www" cannot be expressed
+# in one set of RewriteConds.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# --------------------------------------------------------- what is private
+# Everything here answers 404 rather than 403, so a probe cannot use the
+# status code to confirm that a path exists.
+#
+# These run before the clean-URL rules below, and deliberately use
+# mod_rewrite rather than RedirectMatch: mod_alias is not guaranteed to be
+# loaded, and a missing module makes Apache 500 on every request in the
+# directory rather than skipping the line.
+
+# Stored leads contain personal information and must never be served.
+# Build tooling and the Node automation project have no business being
+# reachable over HTTP either.
+RewriteRule ^(leads|automation|scripts|content|node_modules)(/|$) - [R=404,L]
+
+# Dotfiles: .htaccess, .git, .env and anything else beginning with a dot.
+RewriteRule (^|/)\. - [R=404,L]
+
+# Source and config files that sit next to the site but are not part of it.
+# .txt and .xml are absent on purpose: robots.txt and sitemap.xml must stay
+# public.
+RewriteRule \.(json|jsonl|md|lock|sh|cjs|yml|yaml)$ - [R=404,L]
+
+# ------------------------------------------------------------- clean URLs
+# A trailing slash on something that is not a real directory is dropped, so
+# /about/ and /about do not become two URLs for one page. Real directories
+# (every demo site) are left alone and served by DirectoryIndex.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# /about serves about.html. Existing files and directories are left alone.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# Anyone arriving at the .html version is sent to the clean one, so the same
+# page is never reachable at two URLs.
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# index.html is the folder itself, not a page of its own.
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index(\.html)?[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+</IfModule>
+
+# ------------------------------------------------------------------- 404
+ErrorDocument 404 /404.html
+
+# -------------------------------------------------------------- security
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  # Two years, and the domain is submitted for preloading only once we are
+  # sure every subdomain can do HTTPS.
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+  Header unset X-Powered-By
+</IfModule>
+
+ServerSignature Off
+
+# ------------------------------------------------------------ performance
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Hashed or rarely-changed assets can sit in the cache for a year.
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  # HTML must revalidate or a content fix takes a year to reach anyone.
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+AddDefaultCharset UTF-8

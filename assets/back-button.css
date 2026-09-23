@@ -1,29 +1,96 @@
-/* Shared "back to Kova" floating pill, used on every page of every demo site. */
-.back-to-kova {
+/* The Kova bar, injected at build time into every page of every demo site.
+   It does three jobs: marks the page as a demo so nobody mistakes an invented
+   business for a real one, gives a way back to the studio, and gives someone
+   who likes what they are looking at a way to hire whoever built it.
+
+   Fixed and floating rather than a full-width bar, because each demo brings
+   its own header and a banner across the top would fight with all of them. */
+
+.kova-bar {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 999;
+  top: 18px;
+  left: 18px;
+  z-index: 9999;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 16px 9px 14px;
+  gap: 4px;
+  padding: 6px;
   border-radius: 999px;
-  background: rgba(10,10,10,0.78);
-  color: #f5f1e6;
-  border: 1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(10, 10, 10, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform .2s cubic-bezier(.16,.8,.24,1), background .2s;
+  font-size: 0.8rem;
+  line-height: 1;
+  max-width: calc(100vw - 36px);
 }
-.back-to-kova:hover { transform: translateY(-2px); background: rgba(10,10,10,0.92); }
-.back-to-kova svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-@media (max-width: 640px) {
-  .back-to-kova { top: 12px; left: 12px; padding: 8px 13px 8px 11px; font-size: 0.76rem; }
+.kova-bar a { text-decoration: none; white-space: nowrap; }
+
+.kova-bar .kb-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 13px 8px 11px;
+  border-radius: 999px;
+  color: #f5f1e6;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+.kova-bar .kb-back:hover { background: rgba(255, 255, 255, 0.09); }
+.kova-bar .kb-back svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.kova-bar .kb-note {
+  padding: 0 10px 0 4px;
+  color: #9c9689;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  margin-left: 2px;
+  padding-left: 12px;
+}
+
+.kova-bar .kb-call {
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #e3c581;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.kova-bar .kb-call:hover { background: rgba(227, 197, 129, 0.12); }
+
+.kova-bar .kb-book {
+  /* Stops at #c9a961 rather than a darker gold so the dark label keeps a
+     4.5:1 contrast ratio against its own fill. */
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e3c581, #c9a961);
+  color: #100d05;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.kova-bar .kb-book:hover { transform: translateY(-1px); }
+
+/* Tablet: the "Demo build" label is the least important thing here. */
+@media (max-width: 1024px) {
+  .kova-bar .kb-note { display: none; }
+}
+
+/* Phone: drop to the icon-and-essentials version so it never covers the
+   demo site's own header. */
+@media (max-width: 560px) {
+  .kova-bar {
+    top: 10px;
+    left: 10px;
+    font-size: 0.74rem;
+    padding: 5px;
+  }
+  .kova-bar .kb-back { padding: 7px 10px 7px 9px; }
+  .kova-bar .kb-call { display: none; }
+  .kova-bar .kb-book { padding: 7px 12px; }
 }

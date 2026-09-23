@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a call with Kova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+
+<!--HEADER-->
+
+<section class="page-hero short">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">Book a call</span>
+    <h1 class="reveal">Pick a time that suits you.</h1>
+    <p class="lead reveal">Fifteen minutes, no sales script. You leave the call with a fixed price and a launch date, usually three to five days out.</p>
+  </div>
+</section>
+
+<!-- The scheduler, rendered by the build from content/site.cjs: an embed if
+     a booking link is configured, a button if it is set to open in a new
+     tab, and a short notice pointing at the form below if no link is set
+     yet. The page is useful in all three cases. -->
+<section class="section pt-0">
+  <div class="wrap narrow">
+    {{SCHEDULER}}
+  </div>
+</section>
+
+<section class="section bg-raise" id="message">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <span class="eyebrow">Or just write to us</span>
+      <h2>Rather send a message?</h2>
+      <p>If none of the times work, or you would rather put it in writing first, this reaches the same inbox.</p>
+    </div>
+
+    <form class="book" action="submit.php" method="post"
+          data-validate data-steps data-phone="{{PHONE}}" data-email="{{EMAIL}}" novalidate>
+
+      <div class="gen-progress">
+        <div class="gen-bar"><span></span></div>
+        <span class="gen-count"></span>
+      </div>
+
+      <div class="form-step">
+        <h2 class="gen-q">First, what is your name?</h2>
+        <p class="gen-help">So we know who we are talking to.</p>
+        <div class="field">
+          <label class="hp-label" for="name">Your name</label>
+          <input id="name" name="name" class="gen-input" type="text" autocomplete="name" required maxlength="120" placeholder="Jordan Adeyemi">
+        </div>
+      </div>
+
+      <div class="form-step" hidden>
+        <h2 class="gen-q">Where should we reply?</h2>
+        <p class="gen-help">Used to answer you and nothing else, ever.</p>
+        <div class="field">
+          <label class="hp-label" for="email">Email</label>
+          <input id="email" name="email" class="gen-input" type="email" autocomplete="email" required maxlength="200" placeholder="you@yourbusiness.com">
+        </div>
+      </div>
+
+      <div class="form-step" hidden>
+        <h2 class="gen-q">What are you trying to launch?</h2>
+        <p class="gen-help">A couple of lines is plenty. If you have already made a brief with the generator, paste it in.</p>
+        <div class="field">
+          <label class="hp-label" for="notes">Your message</label>
+          <textarea id="notes" name="notes" class="gen-input" required maxlength="1000" placeholder="What the business does, and what the site needs to do that it cannot do now."></textarea>
+        </div>
+      </div>
+
+      <!-- Honeypot. Off-screen, hidden from assistive tech and skipped by
+           tab order, so only an automated submitter ever fills it in. -->
+      <div class="hp" aria-hidden="true">
+        <label>Company <input name="company" type="text" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="gen-nav">
+        <button class="btn btn-ghost" type="button" data-back>Back</button>
+        <button class="btn btn-primary" type="submit">Next question</button>
+      </div>
+
+      <p class="form-foot">Would rather just talk? {{CONTACT_LINE}}</p>
+    </form>
+
+    <div class="note" id="result" hidden></div>
+  </div>
+</section>
+
+<!--FOOTER-->
+
+<script src="assets/reveal.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/forms.js"></script>
+</body>
+</html>

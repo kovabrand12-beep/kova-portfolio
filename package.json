@@ -1,0 +1,23 @@
+{
+  "name": "kova-portfolio",
+  "version": "1.0.0",
+  "description": "Kova portfolio site + appointment email automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "images": "node scripts/make-images.cjs",
+    "checklist": "npm run build && node scripts/check-hooks.cjs && node scripts/prelaunch.cjs",
+    "htaccess": "npm run build && bash scripts/test-htaccess.sh",
+    "serve": "npm run build && php -S localhost:8000 -t UPLOAD-TO-HOSTINGER scripts/router.php",
+    "book": "node automation/book.js",
+    "confirm": "node automation/confirm.js",
+    "reminders": "node automation/run-reminders.js",
+    "cancel": "node automation/cancel.js",
+    "test": "node automation/selftest.js"
+  },
+  "dependencies": {
+    "luxon": "^3.5.0",
+    "nodemailer": "^6.9.16"
+  }
+}

@@ -1,0 +1,70 @@
+name: Deploy to Hostinger
+
+# Push to main and the site updates. No zipping, no File Manager, no
+# dragging folders around.
+#
+# It builds the site, refuses to deploy if anything is broken, then uploads
+# only the files that actually changed. A typical content edit moves one or
+# two files rather than all seventy-nine.
+#
+# One-time setup, in GitHub -> Settings -> Secrets and variables -> Actions:
+#
+#   FTP_SERVER     ftp.kova-scaling.com
+#   FTP_USERNAME   from hPanel -> Files -> FTP Accounts
+#   FTP_PASSWORD   the password for that account
+#
+# Those are secrets, so they are never visible in the repository or in the
+# build log, which is the whole reason for doing it this way rather than
+# keeping credentials in a file.
+
+on:
+  push:
+    branches: [main]
+  # Lets you trigger a deploy by hand from the Actions tab, which is useful
+  # when you have changed something on the server rather than in the repo.
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Check every button is wired up
+        run: node scripts/check-hooks.cjs
+
+      # The pre-launch audit. This is deliberately a hard gate: a broken
+      # link, a duplicate meta description or a contrast failure stops the
+      # deploy rather than reaching the live site.
+      #
+      # If it blocks you and you need to ship anyway, add
+      # `continue-on-error: true` to this step, push, then take it out again.
+      # Leaving it off permanently defeats the point of having it.
+      - name: Pre-launch audit
+        run: node scripts/prelaunch.cjs
+
+      - name: Upload changed files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./UPLOAD-TO-HOSTINGER/
+          server-dir: /public_html/
+          # Files that live on the server and must survive a deploy. The
+          # first holds your SMTP password and is deliberately not in this
+          # repository; the second is the fallback enquiry store. Deleting
+          # either would break the contact form or lose leads.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            mail-config.php
+            leads/**

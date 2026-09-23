@@ -1,0 +1,47 @@
+name: Appointment — reminders (scheduled)
+
+on:
+  schedule:
+    # Every 10 minutes. GitHub may delay scheduled runs under load, so a
+    # reminder can land a little later than its exact mark — fine for calls.
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: appointments-store
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Send due reminders
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          REPLY_TO: ${{ secrets.REPLY_TO }}
+          DEFAULT_TIMEZONE: ${{ vars.DEFAULT_TIMEZONE }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: node automation/run-reminders.js
+      - name: Commit appointments.json
+        run: |
+          git config user.name "kova-bot"
+          git config user.email "actions@github.com"
+          git add automation/appointments.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore(appointments): reminder run $(date -u +%FT%TZ)"
+          for i in 1 2 3; do
+            git pull --rebase --autostash && git push && break || sleep 5
+          done

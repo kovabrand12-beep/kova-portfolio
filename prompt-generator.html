@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Brief Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+
+<!--HEADER-->
+
+<main class="gen">
+
+  <!-- Step 0: the intro. Everything after this is rendered by generator.js
+       from the question list in content/site.cjs. -->
+  <section class="page-hero short" id="gen-intro">
+    <div class="wrap narrow">
+      <span class="eyebrow reveal">{{GEN_EYEBROW}}</span>
+      <h1 class="reveal">{{GEN_HEADING}}</h1>
+      <p class="lead reveal">{{GEN_LEAD}}</p>
+      <div class="hero-cta reveal">
+        <button class="btn btn-primary btn-lg" type="button" id="gen-start">{{GEN_START}}</button>
+      </div>
+      <p class="gen-note reveal">{{GEN_NOTE}}</p>
+    </div>
+  </section>
+
+  <!-- The question flow. Hidden until Start, and hidden entirely without
+       JavaScript. The fallback below is what those visitors get. -->
+  <section class="gen-flow" id="gen-flow" hidden>
+    <div class="wrap narrow">
+      <div class="gen-progress">
+        <div class="gen-bar"><span id="gen-bar-fill"></span></div>
+        <span class="gen-count" id="gen-count"></span>
+      </div>
+
+      <div class="gen-card" id="gen-card" role="group" aria-live="polite"></div>
+
+      <div class="gen-nav">
+        <button class="btn btn-ghost" type="button" id="gen-back">Back</button>
+        <button class="btn btn-primary" type="button" id="gen-next">Next question</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- The finished prompt, the preview, and the server file. -->
+  <section class="gen-result" id="gen-result" hidden>
+    <div class="wrap narrow">
+      <span class="eyebrow">Step 1</span>
+      <h2 id="gen-result-head">Here is your prompt.</h2>
+      <p class="lead">Copy it, paste it into Claude or ChatGPT, and it will build the site. Everything below was written from your own answers.</p>
+
+      <div class="out">
+        <div class="out-bar">
+          <span class="out-label">Your website prompt</span>
+          <button class="btn btn-primary btn-sm" type="button" id="gen-copy">Copy prompt</button>
+        </div>
+        <pre class="out-body" id="prompt-out"></pre>
+      </div>
+
+      <div class="gen-actions">
+        <button class="btn btn-ghost" type="button" id="gen-download">Download as a file</button>
+        <button class="btn btn-ghost" type="button" id="gen-restart">Start again</button>
+      </div>
+
+      <div class="pv-wrap">
+        <div class="pv-toolbar">
+          <span class="pv-label">Roughly how it could look</span>
+          <div class="pv-devices">
+            <button type="button" class="pv-device on" data-device="desktop" aria-pressed="true">Desktop</button>
+            <button type="button" class="pv-device" data-device="phone" aria-pressed="false">Phone</button>
+          </div>
+        </div>
+        <div class="preview" id="preview"></div>
+        <p class="pv-caption">A sketch of the layout, not the finished design. The colours come from the look you picked, and the buttons come from the one thing you said people should be able to do.</p>
+      </div>
+
+      <div class="step-block">
+        <span class="eyebrow">Step 2</span>
+        <h3>Make the links work</h3>
+        <p>Once the site is built you need one more file, or every page except the homepage will show an error. Save this as <code>.htaccess</code> in the same folder as your <code>index.html</code>.</p>
+        <div class="out">
+          <div class="out-bar">
+            <span class="out-label">.htaccess</span>
+            <button class="btn btn-ghost btn-sm" type="button" id="copy-htaccess">Copy file</button>
+          </div>
+          <pre class="out-body short" id="htaccess-out"></pre>
+        </div>
+        <p class="cal-note">This keeps every page as its own file, which is what lets each one show up in Google separately. Plenty of guides tell you to send every address to <code>index.html</code>; that gives you one page wearing several hats, and Google treats it as one page.</p>
+      </div>
+
+      <div class="step-block">
+        <span class="eyebrow">Step 3</span>
+        <h3>What you still need to supply</h3>
+        <p>The prompt marks these as placeholders. No AI can invent them for you, and none of them should be made up.</p>
+        <ul class="tick" id="todo-out"></ul>
+      </div>
+
+      <div class="contact-box gen-cta">
+        <h2>Or skip all of it.</h2>
+        <p>If you would rather not do this yourself, we build the whole thing and have it live in three to five days. Bring your prompt to the call and we will price it on the spot.</p>
+        <a class="btn btn-primary" href="book.html">Book a call</a>
+        <a class="btn btn-ghost" href="work-with-us.html">See how we work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shown when JavaScript is unavailable. A tool that silently renders
+       nothing is worse than one that tells you to just ring up. -->
+  <noscript>
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="note err">
+          <p>This tool needs JavaScript, which your browser has turned off.</p>
+          <p>No matter. The questions it asks are the same ones we would ask on a call. <a href="book.html">Book one</a> and we will go through them together.</p>
+        </div>
+      </div>
+    </section>
+  </noscript>
+
+</main>
+
+<!--FOOTER-->
+
+<script id="gen-data" type="application/json">{{GEN_QUESTIONS}}</script>
+<script src="assets/reveal.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/generator.js"></script>
+</body>
+</html>
