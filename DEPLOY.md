@@ -416,11 +416,5 @@ That is the point of it. The audit runs before the upload, so a broken link
 or a duplicate meta description stops the deploy instead of reaching the
 live site. The Actions log tells you which check failed.
 
-**Right now it will refuse**, because the analytics token is not set and
-check 19 fails. Two ways past it:
-
-- Add the Cloudflare token to `content/site.cjs` (see CONTENT-TODO item 1),
-  which takes it to 20/20. This is the better answer.
-- Or add `continue-on-error: true` to the "Pre-launch audit" step in
-  `deploy.yml`, push, and take it out once the token is in. Leaving it there
-  permanently means the gate is decorative.
+The audit passes 20/20 as things stand, so a failure means something you
+just changed broke it. Read the log, fix it, push again.

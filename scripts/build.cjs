@@ -69,8 +69,11 @@ const upTo = (rel) => (rel === '404.html' ? '/' : '../'.repeat(rel.split('/').le
 
 const analyticsTag = () => {
   if (!C.analytics.token) return '';
-  return `\n<script defer src="https://static.cloudflareinsights.com/beacon.min.js" `
-    + `data-cf-beacon='{"token":"${C.analytics.token}"}'></script>`;
+  /* Cloudflare's current snippet. Modules are deferred by definition, so no
+     defer attribute, and the beacon sets no cookie, which is why the site
+     ships no consent banner. */
+  return `\n<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" `
+    + `data-cf-beacon='{"token": "${C.analytics.token}"}'></script>`;
 };
 
 /** The booking widget.

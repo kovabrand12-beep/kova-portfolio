@@ -67,9 +67,19 @@ pages.forEach((page) => {
   });
 
   /* A data- hook exists to be found by a script. If no script looks for it,
-     it is a button that does nothing. */
+     it is a button that does nothing.
+     
+     Third-party embeds are the exception: an attribute sitting on a <script>
+     tag that loads a remote file is configuration for that remote file, and
+     we will never find the code that reads it. Cloudflare's beacon token is
+     the example here. */
+  const thirdParty = new Set(
+    [...html.matchAll(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*>/g)]
+      .flatMap((m) => [...m[0].matchAll(/\s(data-[a-z-]+)/g)].map((d) => d[1]))
+  );
   const hooks = new Set([...html.matchAll(/\s(data-[a-z-]+)(?==|[\s>])/g)].map((m) => m[1]));
   hooks.forEach((hook) => {
+    if (thirdParty.has(hook)) return;
     if (!js.includes(hook)) {
       problems.push(`${page}: ${hook} is on an element but no script reads it`);
     }

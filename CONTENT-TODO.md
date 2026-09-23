@@ -8,23 +8,7 @@ kova-scaling.com goes live.
 
 ---
 
-## 1. Cloudflare Web Analytics token, the only failing check
-
-**Where:** `content/site.cjs` → `analytics.token`.
-
-1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics**
-2. **Add a site** → enter `kova-scaling.com`
-3. Copy the token out of the snippet it gives you (the long hex string)
-4. Paste it into `analytics.token` and run `npm run build`
-
-It is cookieless, so no consent banner is needed and none is shipped. Leave
-the token blank and the script is simply left out of the build — the site
-works, but pre-launch check 19 fails and you have no way to tell a client
-whether the site is working.
-
----
-
-## 2. Email address on your own domain
+## 1. Email address on your own domain
 
 **Where:** `content/site.cjs` → `contact.email`, currently
 `kova.brand12@gmail.com`.
@@ -40,7 +24,7 @@ host may refuse to send the notification at all.
 
 ---
 
-## 3. Search Console and the sitemap
+## 2. Search Console and the sitemap
 
 Not a placeholder, but nothing is indexed until it is done. After the domain
 is pointed and HTTPS is live:
@@ -55,7 +39,7 @@ the demo builds at a lower priority so they cannot outrank the studio itself.
 
 ---
 
-## 4. Real photography, later
+## 3. Real photography, later
 
 There is no photography of Kova anywhere on the site; the design carries it on
 type and colour instead, which works. The demo builds use Unsplash stock, which
@@ -68,6 +52,10 @@ none. Flagging it rather than papering over it with stock.
 ---
 
 ## Resolved, no longer a blocker
+
+- **Analytics.** Cloudflare Web Analytics is live on all 44 pages. Cookieless,
+  so the site still ships no consent banner and the privacy policy's claim
+  about cookieless analytics is now true rather than aspirational.
 
 - **The About page.** Written, with Mawana Chidovi named as the founder and
   the positioning stated plainly: a site is judged on whether it brings the

@@ -60,7 +60,7 @@ const nav = [
    Leave it blank and the script is simply left out of the build. */
 const analytics = {
   provider: 'cloudflare',
-  token: '', // [TODO: Cloudflare Web Analytics site token]
+  token: 'f5dc4f9f5fbb415e82b17a6615726e81',
 };
 
 /* ------------------------------------------------------------------ pages */
