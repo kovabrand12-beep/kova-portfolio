@@ -58,6 +58,13 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./UPLOAD-TO-HOSTINGER/
           server-dir: /public_html/
+          # Hostinger advertises AUTH TLS and stalls a plain FTP session after
+          # the banner, which shows up as "Timeout (control socket)" rather
+          # than anything mentioning TLS. Explicit FTPS over the same port 21.
+          protocol: ftps
+          # A GitHub runner reaching a shared host across the Atlantic needs
+          # more than the default 30 seconds on a first, full upload.
+          timeout: 120000
           # Files that live on the server and must survive a deploy. The
           # first holds your SMTP password and is deliberately not in this
           # repository; the second is the fallback enquiry store. Deleting
