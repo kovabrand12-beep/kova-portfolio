@@ -10,6 +10,8 @@ He offers trades businesses (plumbers, HVAC, electricians) 3 to 5 new Google rev
 
 **Goal of every reply:** get a short phone call booked (10 minutes). Don't sell the whole thing over email.
 
+**Mawana only takes calls on Fridays.** Always offer Friday (this Friday, or next Friday if it's already Friday afternoon or the weekend). Ask morning or afternoon. If they say Friday doesn't work, don't offer another day: hold it for Mawana.
+
 ## Campaigns
 
 - `98d13429-f4b4-4a9e-a78f-fa64da3f94a8`: Reviews, KW-Cambridge (has a competitor comparison)
@@ -39,7 +41,7 @@ He offers trades businesses (plumbers, HVAC, electricians) 3 to 5 new Google rev
 |---|---|---|
 | Yes, interested, "tell me more", "how does it work" | Reply and ask for a call (template A) | interested |
 | A question (cost, catch, how, is this legit) | Answer it in 1 to 2 lines, then ask for the call (FAQ below) | interested |
-| They gave a phone number and/or a time | Confirm it (template B). Flag it to Mawana at the top of the report. | meeting_booked |
+| They gave a phone number and/or a Friday time | Confirm it (template B). If the time they gave isn't on a Friday, say you do calls Fridays and ask if Friday works. Flag it to Mawana at the top of the report. | meeting_booked |
 | "Not now", "maybe later", "busy season" | Short and kind (template C) | leave as is |
 | "No thanks", "remove me", "unsubscribe", "stop" | **Don't reply.** They asked not to be emailed. | not_interested |
 | Wrong person, or "send it to X" | Thank them. If they named someone, ask if it's okay to reach out to that person. | wrong_person |
@@ -67,12 +69,12 @@ These show the shape of a reply. Rewrite each one to fit the person.
 >
 > For sure. Easiest is a quick 10 min call so I can see how you get customers now and set it up around that.
 >
-> What's the best number to reach you, and is afternoon or morning better?
+> I do calls on Fridays. What's the best number to reach you, and is morning or afternoon better?
 >
 > Mawana
 
 **B (they gave a number and time):**
-> Perfect, I'll call you Thursday around 2.
+> Perfect, I'll call you Friday around 2.
 >
 > Talk then,
 > Mawana
