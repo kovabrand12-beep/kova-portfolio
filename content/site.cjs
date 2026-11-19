@@ -47,7 +47,8 @@ const brand = {
 
 /* The main navigation, in order. Every entry must point at a real page. */
 const nav = [
-  { href: '/work-with-us', label: 'Work with us' },
+  { href: '/review-management', label: 'Reviews' },
+  { href: '/work-with-us', label: 'Websites' },
   { href: '/prompt-generator', label: 'Free prompt' },
   { href: '/about', label: 'About' },
   { href: '/#work', label: 'Work' },
@@ -72,7 +73,7 @@ const pages = {
   'index.html': {
     title: 'Kova | Websites That Bring In Customers',
     description:
-      'Kova builds fast, search-ready websites for small businesses and gets them live in three to five days. See the work, then book a call.',
+      'Kova manages Google reviews for local businesses and builds fast websites that turn those reviews into calls. See the work, then book a call.',
   },
   'about.html': {
     title: 'About Kova | Who Builds Your Site and How',
@@ -83,6 +84,11 @@ const pages = {
     title: 'Work With Kova | Live In Three To Five Days',
     description:
       'How a Kova site gets built and launched inside a week: the four-stage process, what we need from you, and answers to the questions we get asked every time.',
+  },
+  'review-management.html': {
+    title: 'Review Management | More Google Reviews, Done For You | Kova',
+    description:
+      'Kova asks every customer for a Google review, replies to each one and reports the numbers monthly. Done for you, with real reviews only.',
   },
   'book.html': {
     title: 'Book a Call With Kova | Pick a Time That Suits You',

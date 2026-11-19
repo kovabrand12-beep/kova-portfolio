@@ -19,7 +19,7 @@ const OUT = path.join(ROOT, 'UPLOAD-TO-HOSTINGER');
 
 /* Copied verbatim. Anything not listed here never reaches the server, which
    is how automation/ and package.json stay off the public web. */
-const COPY = ['index.html', 'about.html', 'work-with-us.html', 'book.html',
+const COPY = ['index.html', 'about.html', 'work-with-us.html', 'review-management.html', 'book.html',
   'prompt-generator.html',
   'privacy.html', 'terms.html', '404.html', 'submit.php', '.htaccess',
   'assets', 'demos'];
@@ -395,6 +395,7 @@ function siteFooter(rel) {
       <nav class="foot-nav">
         <a href="${up}about.html">About</a>
         <a href="${up}work-with-us.html">Work with us</a>
+        <a href="${up}review-management.html">Review management</a>
         <a href="${up}book.html#message">Send a message</a>
         <a href="${up}privacy.html">Privacy</a>
         <a href="${up}terms.html">Terms</a>
