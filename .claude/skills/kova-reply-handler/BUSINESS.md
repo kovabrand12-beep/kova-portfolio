@@ -56,6 +56,22 @@ Everything in Growth, plus:
 
 ### Website only: $750 one-time, no plan
 
+
+## Founding prices, names and guarantees (current)
+- Plan names: Reviews = **Get Found**, Growth = **Get Called**, Capture = **Never Miss a Job**.
+- First 10 clients lock in founding prices for as long as they stay: $97 / $297 / $497.
+- Public prices after that: $147 / $397 / $697.
+- Get Found guarantee: 5 new reviews in the first 30 days or the next month is free
+  (only if the client sends at least 30 past customers).
+- Get Called and Never Miss a Job guarantee: missed-call text-back wins back at least 1 job in
+  90 days or 1 month refunded.
+- New in every plan: starter kit (QR review card, van sticker, yard sign print files) and a monthly
+  competitor check in the report.
+- New in Get Called and up: seasonal campaigns to past customers, Google Guaranteed badge setup
+  (Local Services Ads), and a "jobs won back" count in the report.
+- Replies to cold email leads still only ever say "free" and "$97 a month, no contract" (if asked).
+  Guarantees, plan names and other prices are for Mawana's calls.
+
 ## How a client moves through
 1. Free 14-day trial (3 to 5 reviews)
 2. Reviews at $97/month to keep it going
